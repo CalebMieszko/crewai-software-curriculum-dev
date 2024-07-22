@@ -1,0 +1,74 @@
+task_software_development:
+  description: >
+    Provide a detailed overview of the latest best practices in software development. 
+    Focus on popular programming languages, frameworks, and methodologies used in the industry today.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A comprehensive report detailing best practices, including code examples, use cases, and recommended resources.
+
+task_ai_content:
+  description: >
+    Create a foundational outline for a course on AI, covering key topics such as machine learning, data science, neural networks, and natural language processing.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    An outline document that includes a list of topics, brief descriptions of each, and suggested resources for further reading.
+
+task_curriculum_development:
+  description: >
+    Develop detailed lesson plans, quizzes, and programming documentation based on the SME's foundational outlines.
+    Ensure that the content is structured to facilitate progressive learning and comprehension.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A set of lesson plans, quizzes, and documentation that align with the learning objectives and are ready for implementation.
+
+task_curriculum_review:
+  description: >
+    Oversee the overall curriculum design, ensuring it meets educational standards and learning objectives.
+    Review content created by the Senior Curriculum Engineer and provide feedback.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A revised and finalized curriculum that has been reviewed and approved, with feedback incorporated as needed.
+
+task_technical_documentation:
+  description: >
+    Create clear and concise programming documentation and code examples for the lesson plans and quizzes developed.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    High-quality documentation and code examples that are easy to understand and follow for beginners.
+
+task_instructional_design:
+  description: >
+    Design the instructional strategies and methodologies to make the content engaging and accessible.
+    Implement the "I do, We do, You do" teaching method throughout the curriculum.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A detailed instructional design plan that outlines strategies and methodologies to be used in the curriculum.
+
+task_interactive_apps:
+  description: >
+    Develop interactive applications that visually demonstrate complex concepts using HTML, CSS, JavaScript, and relevant frameworks.
+    Ensure these applications are user-friendly and align with the lesson plans.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A set of interactive applications that are fully functional and integrate seamlessly with the curriculum.
+
+task_assessment_development:
+  description: >
+    Develop and refine quizzes, progress checks, and other assessment tools to measure student learning outcomes.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A comprehensive set of assessment tools that effectively measure student progress and understanding.
+
+task_ai_tools_integration:
+  description: >
+    Ensure AI tools like GitHub Copilot and conversational AI are effectively integrated into the curriculum for troubleshooting and support.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A plan for the integration of AI tools, including usage guidelines and examples of how they can assist students.
+
+task_qa_testing:
+  description: >
+    Test interactive applications and curriculum materials to ensure they are free of errors and function as intended.
+    Ensure the content is suitable for {topic}.
+  expected_output: >
+    A detailed QA report identifying any issues and providing recommendations for improvements.

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "curriculum_crew"
+version = "0.1.0"
+description = "A project for developing curriculum with CrewAI using a custom curriculum team. For internal use only."
+authors = ["Caleb Mieszko <caleb@marketingcitadel.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = "^0.35.8" }
+crewai-tools = "^0.4.6"
+
+[tool.poetry.scripts]
+curriculum_crew = "curriculum_crew.main:run"
+train = "curriculum_crew.main:train"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
