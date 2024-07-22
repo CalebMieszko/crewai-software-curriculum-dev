@@ -1,7 +1,7 @@
 
-# AI Crew for Marketing Strategy
+# AI Crew for Software Development Curriculum
 ## Introduction
-This project demonstrates the use of the CrewAI framework to automate the creation of a marketing strategy. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
+This project demonstrates the use of the CrewAI framework to automate the creation of software dev curriculum and programs. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
 
 By [@joaomdmoura](https://x.com/joaomdmoura)
 
