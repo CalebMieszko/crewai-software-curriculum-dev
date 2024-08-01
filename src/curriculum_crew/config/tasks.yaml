@@ -1,4 +1,4 @@
-task_software_development:
+software_development:
   description: >
     Provide a detailed overview of the latest best practices in software development. 
     Focus on popular programming languages, frameworks, and methodologies used in the industry today.
@@ -6,14 +6,14 @@ task_software_development:
   expected_output: >
     A comprehensive report detailing best practices, including code examples, use cases, and recommended resources.
 
-task_ai_content:
+ai_content:
   description: >
     Create a foundational outline for a course on AI, covering key topics such as machine learning, data science, neural networks, and natural language processing.
     Ensure the content is suitable for {topic}.
   expected_output: >
     An outline document that includes a list of topics, brief descriptions of each, and suggested resources for further reading.
 
-task_curriculum_development:
+curriculum_development:
   description: >
     Develop detailed lesson plans, quizzes, and programming documentation based on the SME's foundational outlines.
     Ensure that the content is structured to facilitate progressive learning and comprehension.
@@ -21,7 +21,7 @@ task_curriculum_development:
   expected_output: >
     A set of lesson plans, quizzes, and documentation that align with the learning objectives and are ready for implementation.
 
-task_curriculum_review:
+curriculum_review:
   description: >
     Oversee the overall curriculum design, ensuring it meets educational standards and learning objectives.
     Review content created by the Senior Curriculum Engineer and provide feedback.
@@ -29,14 +29,14 @@ task_curriculum_review:
   expected_output: >
     A revised and finalized curriculum that has been reviewed and approved, with feedback incorporated as needed.
 
-task_technical_documentation:
+technical_documentation:
   description: >
     Create clear and concise programming documentation and code examples for the lesson plans and quizzes developed.
     Ensure the content is suitable for {topic}.
   expected_output: >
     High-quality documentation and code examples that are easy to understand and follow for beginners.
 
-task_instructional_design:
+instructional_design:
   description: >
     Design the instructional strategies and methodologies to make the content engaging and accessible.
     Implement the "I do, We do, You do" teaching method throughout the curriculum.
@@ -44,7 +44,7 @@ task_instructional_design:
   expected_output: >
     A detailed instructional design plan that outlines strategies and methodologies to be used in the curriculum.
 
-task_interactive_apps:
+interactive_apps:
   description: >
     Develop interactive applications that visually demonstrate complex concepts using HTML, CSS, JavaScript, and relevant frameworks.
     Ensure these applications are user-friendly and align with the lesson plans.
@@ -52,23 +52,41 @@ task_interactive_apps:
   expected_output: >
     A set of interactive applications that are fully functional and integrate seamlessly with the curriculum.
 
-task_assessment_development:
+assessment_development:
   description: >
     Develop and refine quizzes, progress checks, and other assessment tools to measure student learning outcomes.
     Ensure the content is suitable for {topic}.
   expected_output: >
     A comprehensive set of assessment tools that effectively measure student progress and understanding.
 
-task_ai_tools_integration:
+ai_tools_integration:
   description: >
     Ensure AI tools like GitHub Copilot and conversational AI are effectively integrated into the curriculum for troubleshooting and support.
     Ensure the content is suitable for {topic}.
   expected_output: >
     A plan for the integration of AI tools, including usage guidelines and examples of how they can assist students.
 
-task_qa_testing:
+qa_testing:
   description: >
     Test interactive applications and curriculum materials to ensure they are free of errors and function as intended.
     Ensure the content is suitable for {topic}.
   expected_output: >
     A detailed QA report identifying any issues and providing recommendations for improvements.
+
+content_planning:
+  description: >
+    Assist the curriculum director in breaking down the user's requirements into actionable tasks. Develop a high-level strategy and plan to achieve the user's goals for the curriculum. Ensure that the plan aligns with the overall objectives and is feasible within the given constraints.
+  expected_output: >
+    A comprehensive content plan outlining the tasks required, their dependencies, and a high-level strategy for achieving the curriculum goals. The plan should include a timeline and resource allocation for each task.
+
+curriculum_management:
+  description: >
+    Communicate with the user to understand their project needs. Discuss these needs with the content planner to develop a detailed plan. Delegate tasks to appropriate agents and manage their execution. Ensure all tasks are completed accurately and cohesively, and make necessary adjustments based on feedback.
+  expected_output: >
+    A detailed project plan developed in collaboration with the content planner, with tasks delegated to appropriate agents. Regular updates on task progress, issues encountered, and adjustments made to ensure the final curriculum meets the user's requirements.
+
+review_curriculum:
+  description: >
+    Review the completed curriculum to ensure it is cohesive, accurate, and meets the user's requirements. Provide feedback to agents and make necessary adjustments. Once satisfied with the final curriculum, deliver it to the user.
+  expected_output: >
+    A reviewed and finalized curriculum that is cohesive, accurate, and meets the user's requirements. A detailed report outlining the review process, feedback provided, and any adjustments made. The final curriculum delivered to the user.

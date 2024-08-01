@@ -1,11 +1,15 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
+from langchain_openai import ChatOpenAI
 
-'''List, BaseModel, and Field are for advanced use cases I'm developing'''
+# List, BaseModel, and Field are for advanced use cases I'm developing
 from typing import List
 from pydantic import BaseModel, Field
 
+# Initialize the callback manager
+from langchain_core.callbacks import StdOutCallbackHandler, CallbackManager
+callback_manager = CallbackManager([StdOutCallbackHandler()])
 
 """ Testing making base models, need to use output_json or similar for this to be useful, just like in the marketing crew
 class CurriculumOutline(BaseModel):
@@ -113,89 +117,143 @@ class CurriculumCrew:
             verbose=True,
         )
 
+    @agent
+    def content_planner(self) -> Agent:
+        return Agent(
+            config=self.agents_config['content_planner'],
+            tools=[SerperDevTool()],
+            verbose=True,
+        )
+
+    @agent
+    def curriculum_director(self) -> Agent:
+        return Agent(
+            config=self.agents_config['curriculum_director'],
+            verbose=True,
+            allow_delegation=True,
+        )
+
     '''
     Tasks could benefit from context and outputs, like so:
     output_json=Copy
-    context=[self.task_software_development(), self.task_ai_content()]
+    context=[self.software_development(), self.ai_content()]
     '''
 
     @task
-    def task_software_development(self) -> Task:
+    def software_development(self) -> Task:
         return Task(
-            config=self.tasks_config['task_software_development'],
+            config=self.tasks_config['software_development'],
             agent=self.senior_sme_software_development()
         )
 
     @task
-    def task_ai_content(self) -> Task:
+    def ai_content(self) -> Task:
         return Task(
-            config=self.tasks_config['task_ai_content'],
+            config=self.tasks_config['ai_content'],
             agent=self.senior_sme_artificial_intelligence()
         )
 
     @task
-    def task_curriculum_development(self) -> Task:
+    def curriculum_development(self) -> Task:
         return Task(
-            config=self.tasks_config['task_curriculum_development'],
+            config=self.tasks_config['curriculum_development'],
             agent=self.senior_curriculum_engineer()
         )
 
     @task
-    def task_curriculum_review(self) -> Task:
+    def curriculum_review(self) -> Task:
         return Task(
-            config=self.tasks_config['task_curriculum_review'],
+            config=self.tasks_config['curriculum_review'],
             agent=self.lead_curriculum_engineer()
         )
 
     @task
-    def task_technical_documentation(self) -> Task:
+    def technical_documentation(self) -> Task:
         return Task(
-            config=self.tasks_config['task_technical_documentation'],
+            config=self.tasks_config['technical_documentation'],
             agent=self.senior_technical_writer()
         )
 
     @task
-    def task_instructional_design(self) -> Task:
+    def instructional_design(self) -> Task:
         return Task(
-            config=self.tasks_config['task_instructional_design'],
+            config=self.tasks_config['instructional_design'],
             agent=self.senior_instructional_designer()
         )
 
     @task
-    def task_interactive_apps(self) -> Task:
+    def interactive_apps(self) -> Task:
         return Task(
-            config=self.tasks_config['task_interactive_apps'],
+            config=self.tasks_config['interactive_apps'],
             agent=self.interactive_application_developer()
         )
 
     @task
-    def task_assessment_development(self) -> Task:
+    def assessment_development(self) -> Task:
         return Task(
-            config=self.tasks_config['task_assessment_development'],
+            config=self.tasks_config['assessment_development'],
             agent=self.assessment_specialist()
         )
 
     @task
-    def task_ai_tools_integration(self) -> Task:
+    def ai_tools_integration(self) -> Task:
         return Task(
-            config=self.tasks_config['task_ai_tools_integration'],
+            config=self.tasks_config['ai_tools_integration'],
             agent=self.ai_integration_specialist()
         )
 
     @task
-    def task_qa_testing(self) -> Task:
+    def qa_testing(self) -> Task:
         return Task(
-            config=self.tasks_config['task_qa_testing'],
+            config=self.tasks_config['qa_testing'],
             agent=self.senior_qa_specialist()
+        )
+
+    @task
+    def content_planning(self) -> Task:
+        return Task(
+            config=self.tasks_config['content_planning'],
+            agent=self.content_planner()
+        )
+
+    @task
+    def curriculum_management(self) -> Task:
+        return Task(
+            config=self.tasks_config['curriculum_management'],
+            agent=self.curriculum_director()
+        )
+
+    @task
+    def review_curriculum(self) -> Task:
+        return Task(
+            config=self.tasks_config['review_curriculum'],
+            agent=self.curriculum_director()
         )
 
     @crew
     def crew(self) -> Crew:
         '''Creates the Curriculum crew'''
+        non_manager_agents = [
+            self.senior_sme_software_development(),
+            self.senior_sme_artificial_intelligence(),
+            self.senior_curriculum_engineer(),
+            self.lead_curriculum_engineer(),
+            self.senior_technical_writer(),
+            self.senior_instructional_designer(),
+            self.interactive_application_developer(),
+            self.assessment_specialist(),
+            self.ai_integration_specialist(),
+            self.senior_qa_specialist(),
+            self.content_planner()
+        ]
         return Crew(
-            agents=self.agents,  # Automatically created by the @agent decorator
+            agents=non_manager_agents,
             tasks=self.tasks,  # Automatically created by the @task decorator
-            process=Process.sequential,
+            manager_agent=self.curriculum_director(),
+            manager_llm=ChatOpenAI(model="gpt-4o", temperature=0.5),
+            planning=True,
+            planning_llm=ChatOpenAI(model="gpt-4o"),
+            process=Process.hierarchical,
             verbose=2,
         )
     """Add memory=True once crewAI fixes windows pathing bug"""
